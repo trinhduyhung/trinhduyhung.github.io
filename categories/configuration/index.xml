@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>configuration - Category - Programming thoughts</title>
+        <link>http://example.org/categories/configuration/</link>
+        <description>configuration - Category - Programming thoughts</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>trinhduyhung1985@gmail.com (Trinh Hung)</managingEditor>
+            <webMaster>trinhduyhung1985@gmail.com (Trinh Hung)</webMaster><lastBuildDate>Sun, 05 Jul 2020 15:11:45 &#43;0700</lastBuildDate><atom:link href="http://example.org/categories/configuration/" rel="self" type="application/rss+xml" /><item>
+    <title>ERROR 1698 (28000): Access denied for user &#39;root&#39;@&#39;localhost&#39;</title>
+    <link>http://example.org/mysql-access-denied-1698/</link>
+    <pubDate>Sun, 05 Jul 2020 15:11:45 &#43;0700</pubDate>
+    <author>Author</author>
+    <guid>http://example.org/mysql-access-denied-1698/</guid>
+    <description><![CDATA[I just installed MySQL server (version 8.0) into my Ubuntu 20.04 with an empty password for the root user. It has occurred to me that the Access denied for user issue kept spinning my head.
+Because for every project we use MySQL we always provide username and password to authenticate the query. I needed to change the password and get rid of the Access denied issue.
+Some internet user suggests that changing the password can solve the issue, like the following]]></description>
+</item><item>
+    <title>Configure multiple Github accounts on a single machine</title>
+    <link>http://example.org/multiple-github-accounts/</link>
+    <pubDate>Sat, 04 Jul 2020 11:06:25 &#43;0700</pubDate>
+    <author>Author</author>
+    <guid>http://example.org/multiple-github-accounts/</guid>
+    <description><![CDATA[Sooner or later as a developer, you will find yourself in a situation where you’re working using multiple Github accounts. One is your company account, one is your personal account. In this post, I’m going to share a common approach that can help you achieve that.
+We will be using ssh as the protocol to authenticate our git requests to Github server because we do not want to enter the password each time we do a git request using username/password authentication.]]></description>
+</item></channel>
+</rss>
