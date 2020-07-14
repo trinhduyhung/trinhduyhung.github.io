@@ -1,16 +1,25 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>github - Tag - Programming thoughts</title>
-        <link>https://trinhduyhung.github.io/tags/github/</link>
-        <description>github - Tag - Programming thoughts</description>
-        <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>trinhduyhung1985@gmail.com (Trinh Hung)</managingEditor>
-            <webMaster>trinhduyhung1985@gmail.com (Trinh Hung)</webMaster><lastBuildDate>Sat, 04 Jul 2020 11:06:25 &#43;0700</lastBuildDate><atom:link href="https://trinhduyhung.github.io/tags/github/" rel="self" type="application/rss+xml" /><item>
-    <title>Configure multiple Github accounts on a single machine</title>
-    <link>https://trinhduyhung.github.io/multiple-github-accounts/</link>
-    <pubDate>Sat, 04 Jul 2020 11:06:25 &#43;0700</pubDate>
-    <author>Author</author>
-    <guid>https://trinhduyhung.github.io/multiple-github-accounts/</guid>
-    <description><![CDATA[Sooner or later as a developer, you will find yourself in a situation where you’re working using multiple Github accounts. One is your company account, one is your personal account. In this post, I’m going to share a common approach that can help you achieve that.
-We will be using ssh as the protocol to authenticate our git requests to Github server because we do not want to enter the password each time we do a git request using username/password authentication.]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>github on Programming thoughts</title>
+    <link>https://trinhduyhung.github.io/tags/github/</link>
+    <description>Recent content in github on Programming thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 04 Jul 2020 11:06:25 +0700</lastBuildDate>
+    
+	<atom:link href="https://trinhduyhung.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Configure multiple Github accounts on a single machine</title>
+      <link>https://trinhduyhung.github.io/posts/multiple-github-accounts/</link>
+      <pubDate>Sat, 04 Jul 2020 11:06:25 +0700</pubDate>
+      
+      <guid>https://trinhduyhung.github.io/posts/multiple-github-accounts/</guid>
+      <description>Sooner or later as a developer, you will find yourself in a situation where you’re working using multiple Github accounts. One is your company account, one is your personal account. In this post, I’m going to share a common approach that can help you achieve that.
+We will be using ssh as the protocol to authenticate our git requests to Github server because we do not want to enter the password each time we do a git request using username/password authentication.</description>
+    </item>
+    
+  </channel>
 </rss>

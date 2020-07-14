@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>series on Programming thoughts</title>
+    <link>https://trinhduyhung.github.io/categories/series/</link>
+    <description>Recent content in series on Programming thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 12 Jul 2020 16:27:26 +0700</lastBuildDate>
+    
+	<atom:link href="https://trinhduyhung.github.io/categories/series/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introduction to Linux</title>
+      <link>https://trinhduyhung.github.io/posts/introduction-linux/</link>
+      <pubDate>Sun, 12 Jul 2020 16:27:26 +0700</pubDate>
+      
+      <guid>https://trinhduyhung.github.io/posts/introduction-linux/</guid>
+      <description>A brief history of Unix In 1969 (also the year in which people went to the moon for the first time in human history) the very first version of Unix operating system was created in assembly language for the minicomputer PDP-7 at Bell Labs (9 Nobel Prizes have been awarded for the work completed at this phenomenon laboratory). The PDP-7 on which Ken Thompson developed and ran the first version of Unix had a really small memory (4 kilobytes).</description>
+    </item>
+    
+  </channel>
+</rss>

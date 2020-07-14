@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='A brief history of Unix In 1969 (also the year in which people went to the moon for the first time in human history) the very first version of Unix operating system was created in assembly language for the minicomputer PDP-7 at Bell Labs (9 Nobel Prizes have been awarded for the work completed at this phenomenon laboratory). The PDP-7 on which Ken Thompson developed and ran the first version of Unix had a really small memory (4 kilobytes).'>
+<meta name='theme-color' content='#9bbde8'>
+
+<meta property='og:title' content='Introduction to Linux • Programming thoughts'>
+<meta property='og:description' content='A brief history of Unix In 1969 (also the year in which people went to the moon for the first time in human history) the very first version of Unix operating system was created in assembly language for the minicomputer PDP-7 at Bell Labs (9 Nobel Prizes have been awarded for the work completed at this phenomenon laboratory). The PDP-7 on which Ken Thompson developed and ran the first version of Unix had a really small memory (4 kilobytes).'>
+<meta property='og:url' content='https://trinhduyhung.github.io/posts/introduction-linux/'>
+<meta property='og:site_name' content='Programming thoughts'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='linux'><meta property='article:published_time' content='2020-07-12T16:27:26&#43;07:00'/><meta property='article:modified_time' content='2020-07-12T16:27:26&#43;07:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.73.0" />
+
+  <title>Introduction to Linux • Programming thoughts</title>
+  <link rel='canonical' href='https://trinhduyhung.github.io/posts/introduction-linux/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#9bbde8;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Looking for?</h4>
+  </header>
+
+  <form action='/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud no-shuffle'><li>
+        <a href='/tags/github/' style='font-size:1em'>github</a>
+      </li><li>
+        <a href='/tags/linux/' style='font-size:1em'>linux</a>
+      </li><li>
+        <a href='/tags/mysql/' style='font-size:1em'>mysql</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='https://trinhduyhung.github.io'>Home</a>
+      </li><li class='item'>
+        <a href='https://trinhduyhung.github.io/posts/'>Posts</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Programming thoughts</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Introduction to Linux</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2020-07-12T16:27:26&#43;07:00'>2020, Jul 12</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+3 mins read
+</span>
+
+
+  
+  
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <h3 id="a-brief-history-of-unix">A brief history of Unix</h3>
+<p>In 1969 (also the year in which people went to the moon for the first time in human history) the very first version of Unix operating system was created in assembly language for the minicomputer PDP-7 at Bell Labs (9 Nobel Prizes have been awarded for the work completed at this phenomenon laboratory). The PDP-7 on which <a href="https://en.wikipedia.org/wiki/Ken_Thompson">Ken Thompson</a> developed and ran the first version of Unix had a really small memory (4 kilobytes). This memory constraint was a major factor that led to the simplicity of the Unix design philosophy.</p>
+<blockquote>
+<p>UNIX is basically a simple operating system, but you have to be a genius to understand the simplicity. &ndash; Dennis Ritchie</p>
+</blockquote>
+<p>In 1971, the Unix group at Bell Labs attempted to rewrite Unix in a high level programming language so that it would be easier for them to port Unix to support other computer architectures. The B programming language was then created. It&rsquo;s the work of Ken Thompson and <a href="https://en.wikipedia.org/wiki/Dennis_Ritchie">Dennis Ritchie</a>. The B programming language then became the precursor to the C language, the original version of which was completed by Dennis Ritchie in 1972.</p>
+<p>In 1972, Thompson rewrote the Unix kernel in C. In subsequent years Unix was carried out at the University of California at Berkeley (UCB).</p>
+<p>Many variations were then developed and they are collectively referred to as Unix-like operating systems. Unix and Unix-like operating systems are considered as the best ever created in terms of stability, security, flexibility, scalability and elegance.</p>
+<h3 id="introduction-to-linux">Introduction to Linux</h3>
+<p>In 1991, <a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a> (founder of Linux) while studying at the University of Helsinki (in Finland) was not happy with the MS-DOS operating system. His attempt to retrieve a free licence for Unix failed since Unix was not free.  After reading the <em>Operating Systems: Design and Implementation</em> book by <a href="https://en.wikipedia.org/wiki/Andrew_S._Tanenbaum">Andy Tanenbaum</a>, the book that launched him to new heights, he decided to write his own operating system <a href="https://github.com/torvalds/linux">Linux</a>. Linux eventually became one of the largest open source projects in the world.</p>
+<p>Linux actually is the <a href="https://www.kernel.org/">kernel</a>  that provide the core functionalities for many operating systems that based on it. These operating systems often called Linux distribution. There are more than 200 Linux distrubitions out there among them Ubuntu, Fedora, Debian, Kali Linux, &hellip; are most well-known.</p>
+<h3 id="linux-vs-unix">Linux vs Unix</h3>
+<p>Linux is considered as a clone of Unix since it was developed to mimic Unix but none of it&rsquo;s source code was copied from Unix source code.</p>
+<p>Like Unix, Linux is a multiuser, multitasking, highly flexible, secure and robust operating system.</p>
+<p>Unlike Unix, Linux is a free software. It was released by Linus Torvalds under GNU General Public License. Everyone is permitted to download Linux from the Internet at no cost and to use it for any desired purpose, make copies as many as desired and even redistribute it.</p>
+<blockquote>
+<p>Software is like sex. It&rsquo;s better when it&rsquo;s free. &ndash; Linus Torvalds</p>
+</blockquote>
+<p>Linux can run on a wide range of hardware, including handheld devices (including cell phones), game machines, desktop computers, workstations, mainframes, supercomputer, industry robots and even wristwatches.</p>
+<p>Linux is used by individuals, corporations, goverments, academic institutions and other organizations. Since Linux&rsquo;s source code is open, everyone can monitor the code for security holes or customize it to suite their need.</p>
+<p>People, especially who is studying to become computer professionals, are more and more interested in learning Linux. Having linux skills is also desirable for many programmers.</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/series/'>series</a></div>
+<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/linux/'>linux</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/mysql-access-denied-1698/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>ERROR 1698 (28000): Access denied for user &#39;root&#39;@&#39;localhost&#39;</a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/trinhduyhung' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:trinhduyhung1985@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2020 Trinh Duy Hung. Powered by <!-- raw HTML omitted -->Hugo<!-- raw HTML omitted --> and <!-- raw HTML omitted -->Engimo<!-- raw HTML omitted --> </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='https://trinhduyhung.github.io/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Sooner or later as a developer, you will find yourself in a situation where you’re working using multiple Github accounts. One is your company account, one is your personal account. In this post, I’m going to share a common approach that can help you achieve that.
+We will be using ssh as the protocol to authenticate our git requests to Github server because we do not want to enter the password each time we do a git request using username/password authentication.'>
+<meta name='theme-color' content='#9bbde8'>
+
+<meta property='og:title' content='Configure multiple Github accounts on a single machine • Programming thoughts'>
+<meta property='og:description' content='Sooner or later as a developer, you will find yourself in a situation where you’re working using multiple Github accounts. One is your company account, one is your personal account. In this post, I’m going to share a common approach that can help you achieve that.
+We will be using ssh as the protocol to authenticate our git requests to Github server because we do not want to enter the password each time we do a git request using username/password authentication.'>
+<meta property='og:url' content='https://trinhduyhung.github.io/posts/multiple-github-accounts/'>
+<meta property='og:site_name' content='Programming thoughts'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='github'><meta property='article:published_time' content='2020-07-04T11:06:25&#43;07:00'/><meta property='article:modified_time' content='2020-07-04T11:06:25&#43;07:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.73.0" />
+
+  <title>Configure multiple Github accounts on a single machine • Programming thoughts</title>
+  <link rel='canonical' href='https://trinhduyhung.github.io/posts/multiple-github-accounts/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#9bbde8;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Looking for?</h4>
+  </header>
+
+  <form action='/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud no-shuffle'><li>
+        <a href='/tags/github/' style='font-size:1em'>github</a>
+      </li><li>
+        <a href='/tags/linux/' style='font-size:1em'>linux</a>
+      </li><li>
+        <a href='/tags/mysql/' style='font-size:1em'>mysql</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='https://trinhduyhung.github.io'>Home</a>
+      </li><li class='item'>
+        <a href='https://trinhduyhung.github.io/posts/'>Posts</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Programming thoughts</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Configure multiple Github accounts on a single machine</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2020-07-04T11:06:25&#43;07:00'>2020, Jul 04</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+8 mins read
+</span>
+
+
+  
+  
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+<details class='container entry-toc'>
+  <summary class='title'>
+    <span>Table of Contents</span>
+  </summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#generate-ssh-key-pair-using-ssh-keygen">Generate ssh key pair using ssh-keygen</a></li>
+        <li><a href="#copy-the-public-key-content-to-corresponding-github-account">Copy the public key content to corresponding Github account</a></li>
+        <li><a href="#register-generated-key-pairs-with-ssh-agent">Register generated key pairs with ssh-agent</a></li>
+        <li><a href="#configure-the-ssh-key-pairs-in-sshconfig-file">Configure the ssh key pairs in ~/.ssh/config file</a></li>
+        <li><a href="#a-little-bit-about-git-configuration">A little bit about git configuration</a></li>
+        <li><a href="#user-case-1-you-want-to-clone-your-company-project-from-github">User case 1: you want to clone your company project from Github</a></li>
+        <li><a href="#user-case-2-your-company-project-on-your-local-machine-is-not-tracked-by-git-yet-and-you-want-to-push-it-upstream">User case 2: your company project (on your local machine) is not tracked by git yet and you want to push it upstream</a></li>
+        <li><a href="#user-case-3-your-company-project-was-cloned-by-using-usernamepassword-authentication">User case 3: your company project was cloned by using username/password authentication</a></li>
+        <li><a href="#user-case-4-you-want-to-clone-your-personal-project-from-github">User case 4: you want to clone your personal project from Github</a></li>
+        <li><a href="#user-case-5-your-personal-project-on-your-local-machine-is-not-tracked-by-git-yet-and-you-want-to-push-it-upstream">User case 5: your personal project (on your local machine) is not tracked by git yet and you want to push it upstream</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+  <div class='container entry-content'>
+  <p>Sooner or later as a developer, you will find yourself in a situation where you’re working using multiple Github accounts. One is your company account, one is your personal account. In this post, I’m going to share a common approach that can help you achieve that.</p>
+<p>We will be using ssh as the protocol to authenticate our git requests to Github server because we do not want to enter the password each time we do a git request using username/password authentication. To use ssh we will need a ssh key pair (private/public keys) to authenticate each git request. Your public key will be stored on Github server. It acts as a lock to guard your Github repositories. To access (unlock) the repositories you will need the private key stored on your local machine and acts as the key for that lock. For that reason, you always keep your private key secured.</p>
+<h3 id="generate-ssh-key-pair-using-ssh-keygen">Generate ssh key pair using ssh-keygen</h3>
+<p>On a Linux distribution machine like my Ubuntu machine, you can generate a ssh key pair by using the <strong>ssh-keygen</strong> command line. After you generated a key pair, you will find it under <strong>~/.ssh</strong> directory.</p>
+<p>Maybe in that .ssh directory, you can find some key pairs already there generated by someone else. The key pair normally will be <strong>id_rsa</strong> for the private key, <strong>id_rsa.pub</strong> for the public key. If you’re not sure about the key pairs generated before, for example the person who created the key pairs might have secured the key pairs with a passphrase while creating it, then create a new one.</p>
+<p>In order to do it, run the following command on your terminal:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;bob@company.com&#34;</span> -f <span style="color:#e6db74">&#34;id_rsa&#34;</span>
+</code></pre></div><p>When you’re prompted to enter the passphrase, leave it empty.</p>
+<p>This creates a new ssh key pair, using the provided email as a label and you will find in the <strong>~/.ssh</strong> directory 2 new generated files: <strong>id_rsa</strong> and <strong>id_rsa.pub</strong></p>
+<p>Similarly, let’s generate another key pair for your personal Github account. In order to do it, run the following command on your terminal:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;bob@gmail.com&#34;</span> -f <span style="color:#e6db74">&#34;id_rsa_personal&#34;</span>
+</code></pre></div><p>On my machine, this command generates <strong>id_rsa_personal</strong> and <strong>id_rsa_personal.pub</strong> files in the current directory where I invoke the command line.</p>
+<p>Copy them to the <strong>~/.ssh</strong> directory using the following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp id_rsa_personal id_rsa_personal.pub ~/.ssh
+</code></pre></div><blockquote>
+<p>Be careful because you do not want to overwrite the key pairs generated before in the <strong>~/.ssh</strong> directory. To simplify things for this post, I assume that the pair (id_rsa, id_rsa_public) is absent in the <strong>~/.ssh</strong> directory.</p>
+</blockquote>
+<h3 id="copy-the-public-key-content-to-corresponding-github-account">Copy the public key content to corresponding Github account</h3>
+<p>Let’s print out on the terminal the content of the public key generated above. Run the following commands:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/.ssh
+cat id_rsa.pub
+</code></pre></div><p>Then copy the output text and login to <a href="https://github.com/">Github</a> with your personal account. Then go to Settings &gt; SSH and GPG keys &gt; New SSH Key. Copy the output text and paste to the text area on Github. Name it, for example, &ldquo;key generated using company A’s laptop&rdquo;.</p>
+<h3 id="register-generated-key-pairs-with-ssh-agent">Register generated key pairs with ssh-agent</h3>
+<p>The ssh-agent acts like a keychain that is responsible for holding the private keys. In addition to holding private keys it also handles signing the authentication data using private keys.</p>
+<p>Before adding the new SSH key to the ssh-agent, ensure the ssh-agent is running by executing the following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ssh-agent -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><p>Now when the ssh-agent is running, executing the following commands will add the new SSH key to the local ssh agent.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh-add -K ~/.ssh/id_rsa
+ssh-add -K ~/.ssh/id_rsa_personal
+</code></pre></div><h3 id="configure-the-ssh-key-pairs-in-sshconfig-file">Configure the ssh key pairs in ~/.ssh/config file</h3>
+<p>Now the fun part. Every time you invoke a git request from your terminal, your git client will look for the private key (it will ask the ssh-agent) and use it to authenticate itself to Github git server. Since you’re having multiple key pairs how the git client would know it?</p>
+<p>It turns out, when the git client invokes a git request using ssh protocol, it can look at a config file at ~/.ssh directory named <strong>config</strong>. If it’s not there already, create one.
+Create a file named &ldquo;config&rdquo; with the following content:</p>
+<pre><code>Host company
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+
+Host github.com  
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_personal
+</code></pre><p>Save it.</p>
+<p>Now <strong>company</strong> becomes a custom host name for the Github URL corresponding to your company Github account. Later as you will see, you will be naming your remote git repository in conjunction with this host name. In the configuration file, we map this custom host name to the <strong>id_rsa</strong> key.</p>
+<p><strong>Configure the git user name and email information</strong> <!-- raw HTML omitted -->
+This is important because you’re having two emails: personal and company. Github identifies the author of any commit from the email attached with the commit. We need to tell git the proper information for the author.
+You can use the git commands like the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git config --global user.name <span style="color:#e6db74">&#34;Bob&#34;</span>
+git config --global user.email bob@company.com
+</code></pre></div><p>to configure the proper information. The option &ndash;global can be substituted with &ndash;system or &ndash;local depending on your user case.</p>
+<p>-&gt;In my case, the system-wide configuration is empty. I used the global configuration, so that if the local configuration is empty then the name and email are set to my name and my company email.</p>
+<h3 id="a-little-bit-about-git-configuration">A little bit about git configuration</h3>
+<p>Git looks for the configuration information in 3 possible places:</p>
+<p>First, the system-wide <strong>/etc/gitconfig</strong> file, which contains settings that are applied to every user on the system and all of their repositories. You can make Git read and write to this file by passing the &ndash;system option.</p>
+<p>Second, the <strong>~/.gitconfig</strong> (or <strong>~/.config/git/config</strong>) file, which is specific to each user. You can make Git read and write to this file by passing the &ndash;global option.</p>
+<p>Finally, the <strong>.git/config</strong> file of whatever repository you’re currently using. These values are specific to that single repository only. You can make Git read and write to this file by passing the &ndash;local option. (If you don’t specify which level you want to work with, this is the default.)</p>
+<p>As a rule of thumb, git always looks at things from the narrowest place which is local, then home, then system-wide.</p>
+<p>In my case, the <strong>/etc/config</strong> is already set with my company account name and email so I will configure the user.name and user.email using &ndash;local option.</p>
+<p>The following command line will show all inherited values from: system, global and local</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git config -l
+</code></pre></div><h3 id="user-case-1-you-want-to-clone-your-company-project-from-github">User case 1: you want to clone your company project from Github</h3>
+<p>Let&rsquo;s say your company Github repository URL is something like (you can get this URL from Github) <!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p>Turn it into something that your local machine can understand it <!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<blockquote>
+<p>Companies usually setup multiple repositories under a company repository name or a team repository name. In the command above, company-repo means the company repository name.</p>
+</blockquote>
+<p>Clone your company repository by running the following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@company:your-company-github-username/company-repo/remote-repo-name.git
+</code></pre></div><p>It should then clone the repository to a directory named &ldquo;remote-repo-name&rdquo; inside your current directory.</p>
+<h3 id="user-case-2-your-company-project-on-your-local-machine-is-not-tracked-by-git-yet-and-you-want-to-push-it-upstream">User case 2: your company project (on your local machine) is not tracked by git yet and you want to push it upstream</h3>
+<p>Let’s say your company project is located in the &ldquo;company-project&rdquo; directory.
+On your terminal run the following commands:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd company-project
+git remote add origin git@company:your-company-github-username/company-repository.git
+git push origin master
+</code></pre></div><h3 id="user-case-3-your-company-project-was-cloned-by-using-usernamepassword-authentication">User case 3: your company project was cloned by using username/password authentication</h3>
+<p>Run the following commands on your terminal:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd company-project
+git remote set-URL origin git@company:your-company-github-username/remote-repo-name.git
+</code></pre></div><p>Verify that the remote URL has changed:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git remote -v
+&gt; origin  git@company:your-company-github-username/remote-repo-name.git <span style="color:#f92672">(</span>fetch<span style="color:#f92672">)</span>
+&gt; origin  git@company:your-company-github-username/remote-repo-name.git <span style="color:#f92672">(</span>push<span style="color:#f92672">)</span>
+</code></pre></div><p>Where &ldquo;remote-repo-name&rdquo; is the name of your project’s repository on Github.</p>
+<h3 id="user-case-4-you-want-to-clone-your-personal-project-from-github">User case 4: you want to clone your personal project from Github</h3>
+<p>Let&rsquo;s say your personal Github repository URL is something like (you can get this URL from Github)</p>
+<!-- raw HTML omitted -->
+<p>Turn it into something that your local machine can understand it</p>
+<!-- raw HTML omitted -->
+<p>Clone your company repository by running the following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@github.com:your-personal-github-username/remote-repo-name.git
+</code></pre></div><p>It should then clone the repository to a directory named &ldquo;remote-repo-name&rdquo; inside your current directory.</p>
+<p>Go into this directory and configure the <strong>user.name</strong> and <strong>user.email</strong> information.
+On your terminal, run the following commands:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd remote-repo-name
+git config --local user.name <span style="color:#e6db74">&#34;Bob&#34;</span>
+git config --local user.email bob@gmail.com
+</code></pre></div><blockquote>
+<p>Because I already set the global configuration to my name and my company email. This local configuration is desirable.</p>
+</blockquote>
+<h3 id="user-case-5-your-personal-project-on-your-local-machine-is-not-tracked-by-git-yet-and-you-want-to-push-it-upstream">User case 5: your personal project (on your local machine) is not tracked by git yet and you want to push it upstream</h3>
+<p>Let’s say your personal project is located in a directory named &ldquo;my-repository&rdquo; and you want to push it to Github using your personal Github account.</p>
+<p>Go into this directory and configure the <strong>user.name</strong> and <strong>user.email</strong> information.
+On your terminal, run the following commands:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd my-repository
+git config --local user.name <span style="color:#e6db74">&#34;Bob&#34;</span>
+git config --local user.email bob@gmail.com
+</code></pre></div><blockquote>
+<p>Because I already set the global configuration to my name and my company email. This local configuration is desirable.</p>
+</blockquote>
+<p>Initialize a git repository inside it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd my-repository
+git init
+</code></pre></div><p>Add necessary files to your staging area:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add *
+</code></pre></div><blockquote>
+<p>As an example, the command above adds all your project&rsquo;s files to the staging area</p>
+</blockquote>
+<p>Make your first commit to your local repository</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit -m <span style="color:#e6db74">&#34;first commit&#34;</span>
+</code></pre></div><p>Now go to <a href="https://github.com">Github</a> and create a new repository named &ldquo;my-repository&rdquo; using your personal Github account.</p>
+<p>Now go back to your terminal and run the following commands:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git remote add origin git@github.com:your-personal-github-username/my-repository.git
+git push origin master
+</code></pre></div><p>That’s all. Happy coding!</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/configuration/'>configuration</a></div>
+<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/github/'>github</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='next-entry sep-before'>
+      <a href='/posts/mysql-access-denied-1698/'>
+        <span class='screen-reader-text'>Next post: </span>ERROR 1698 (28000): Access denied for user &#39;root&#39;@&#39;localhost&#39;<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/trinhduyhung' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:trinhduyhung1985@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2020 Trinh Duy Hung. Powered by <!-- raw HTML omitted -->Hugo<!-- raw HTML omitted --> and <!-- raw HTML omitted -->Engimo<!-- raw HTML omitted --> </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='https://trinhduyhung.github.io/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
