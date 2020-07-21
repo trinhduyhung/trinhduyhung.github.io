@@ -2,11 +2,11 @@
 <html lang='en'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='A brief history of Unix In 1969 (also the year in which people went to the moon for the first time in human history) the very first version of Unix operating system was created in assembly language for the minicomputer PDP-7 at Bell Labs (9 Nobel Prizes have been awarded for the work completed at this phenomenon laboratory). The PDP-7 on which Ken Thompson developed and ran the first version of Unix had a really small memory (4 kilobytes).'>
+<meta name='description' content='A brief history of Unix It all started in 1969 when Ken Thompson wrote his game named Space Travel that simulates travel in the Solar System. He originally wrote it for use on Multics (Multiplexed Information and Computing Service) operating system, but soon after Bell Labs pulled out of the Multics project, he rewrote it for the obsolete and little-used PDP-7 minicomputer that he found at his neighboring department. While writing this game on the PDP-7, he decided to implement his own base code libraries for the game to use including arithmetic, packages and graphics subsystem.'>
 <meta name='theme-color' content='#9bbde8'>
 
 <meta property='og:title' content='Introduction to Linux • Programming thoughts'>
-<meta property='og:description' content='A brief history of Unix In 1969 (also the year in which people went to the moon for the first time in human history) the very first version of Unix operating system was created in assembly language for the minicomputer PDP-7 at Bell Labs (9 Nobel Prizes have been awarded for the work completed at this phenomenon laboratory). The PDP-7 on which Ken Thompson developed and ran the first version of Unix had a really small memory (4 kilobytes).'>
+<meta property='og:description' content='A brief history of Unix It all started in 1969 when Ken Thompson wrote his game named Space Travel that simulates travel in the Solar System. He originally wrote it for use on Multics (Multiplexed Information and Computing Service) operating system, but soon after Bell Labs pulled out of the Multics project, he rewrote it for the obsolete and little-used PDP-7 minicomputer that he found at his neighboring department. While writing this game on the PDP-7, he decided to implement his own base code libraries for the game to use including arithmetic, packages and graphics subsystem.'>
 <meta property='og:url' content='https://trinhduyhung.github.io/posts/introduction-linux/'>
 <meta property='og:site_name' content='Programming thoughts'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='linux'><meta property='article:published_time' content='2020-07-12T16:27:26&#43;07:00'/><meta property='article:modified_time' content='2020-07-12T16:27:26&#43;07:00'/><meta name='twitter:card' content='summary'>
@@ -133,7 +133,7 @@
   <polyline points="12 6 12 12 15 15"/>
   
 </svg>
-3 mins read
+5 mins read
 </span>
 
 
@@ -150,16 +150,40 @@
 
   <div class='container entry-content'>
   <h3 id="a-brief-history-of-unix">A brief history of Unix</h3>
-<p>In 1969 (also the year in which people went to the moon for the first time in human history) the very first version of Unix operating system was created in assembly language for the minicomputer PDP-7 at Bell Labs (9 Nobel Prizes have been awarded for the work completed at this phenomenon laboratory). The PDP-7 on which <a href="https://en.wikipedia.org/wiki/Ken_Thompson">Ken Thompson</a> developed and ran the first version of Unix had a really small memory (4 kilobytes). This memory constraint was a major factor that led to the simplicity of the Unix design philosophy.</p>
+<p>It all started in 1969 when <a href="https://en.wikipedia.org/wiki/Ken_Thompson">Ken Thompson</a> wrote his game named Space Travel that simulates travel in the Solar System. He originally wrote it for use on Multics (Multiplexed Information and Computing Service) operating system, but soon after Bell Labs pulled out of the Multics project, he rewrote it for the obsolete and little-used PDP-7 minicomputer that he found at his neighboring department. While writing this game on the PDP-7, he decided to implement his own base code libraries for the game to use including arithmetic, packages and graphics subsystem. These subsystems were coded in Assembly language on the GECOS (General Comprehensive Operating System) system and assembled. Then the output physically was put on punched tapes to be carried over and inserted into the PDP-7. Thompson then wrote an assembler for the PDP-7 to avoid this tedious process. The game ran slowly on the PDP-7 which caused Thompson to design his own file system based on some ideas from <a href="https://en.wikipedia.org/wiki/Dennis_Ritchie">Dennis Ritchie</a> who also worked at Bell Labs and had a lot of experiences with the Multics file system. By the time the game was fully ported to the PDP-7, Thompson had expanded his software craft to a full, basic operating system. The operating system was then named Unix in 1970.</p>
+<p>The PDP-7 computer had an 18-bit word length (in contrast to modern computers where each of them is nearly eight bit word length) and only four kilo bytes of memory (which is only a small fraction of the capacity of a single modern floppy disk). This extremely small memory was undoubtedly a major factor in Thompson&rsquo;s keeping his operating system extremely small and providing it with an elegant simplicity that has, in turn, played an important role in the great success of it and its various descendants (including <a href="http://www.linfo.org/linuxdef.html">Linux</a>).</p>
+<p>Unix systems are characterized by a modular design that is sometimes called the Unix philosophy. According to this philosophy, the operating system should provide a set of simple tools, each of which performs a limited, well-defined function. A unified filesystem (the Unix system) and an inter-process communication mechanism known as &ldquo;pipes&rdquo;&rdquo; serve as the main means of communication, and a shell scripting and command language (the <a href="https://en.wikipedia.org/wiki/Unix_shell" title="Unix shell">Unix shell</a>) is used to combine the tools to perform complex workflows.</p>
+<p>In the book <em><a href="https://en.wikipedia.org/wiki/The_Art_of_Unix_Programming" title="The Art of Unix Programming">The Art of Unix Programming</a></em> that was first published in 2003, <a href="https://en.wikipedia.org/wiki/Eric_S._Raymond" title="Eric S. Raymond">Eric S. Raymond</a>, an American programmer and open source advocate, summarizes the Unix philosophy as <a href="https://en.wikipedia.org/wiki/KISS_Principle" title="KISS Principle">KISS Principle</a> of &ldquo;Keep it Simple, Stupid.&rdquo; He provides a series of design rules:</p>
+<ul>
+<li>Build modular programs</li>
+<li>Write readable programs</li>
+<li>Use composition</li>
+<li>Separate mechanisms from policy</li>
+<li>Write simple programs</li>
+<li>Write small programs</li>
+<li>Write transparent programs</li>
+<li>Write robust programs</li>
+<li>Make data complicated when required, not the program</li>
+<li>Build on potential users&rsquo; expected knowledge</li>
+<li>Avoid unnecessary output</li>
+<li>Write programs which fail in a way that is easy to diagnose</li>
+<li>Value developer time over machine time</li>
+<li>Write <a href="https://en.wikipedia.org/wiki/Generative_programming" title="Generative programming">abstract programs that generate code</a> instead of writing code by hand</li>
+<li>Prototype software before polishing it</li>
+<li>Write flexible and open programs</li>
+<li>Make the program and protocols extensible.</li>
+</ul>
 <blockquote>
 <p>UNIX is basically a simple operating system, but you have to be a genius to understand the simplicity. &ndash; Dennis Ritchie</p>
 </blockquote>
-<p>In 1971, the Unix group at Bell Labs attempted to rewrite Unix in a high level programming language so that it would be easier for them to port Unix to support other computer architectures. The B programming language was then created. It&rsquo;s the work of Ken Thompson and <a href="https://en.wikipedia.org/wiki/Dennis_Ritchie">Dennis Ritchie</a>. The B programming language then became the precursor to the C language, the original version of which was completed by Dennis Ritchie in 1972.</p>
-<p>In 1972, Thompson rewrote the Unix kernel in C. In subsequent years Unix was carried out at the University of California at Berkeley (UCB).</p>
+<p>In 1971, the Unix group at Bell Labs attempted to rewrite Unix in a high level programming language so that it would be easier for them to port Unix to other computer architectures. The B programming language was then created. It&rsquo;s the work of Ken Thompson and Dennis Ritchie. The B programming language then became the precursor to the C language, the original version of which was completed by Dennis Ritchie in 1972.</p>
+<p>In 1972, Thompson rewrote the Unix kernel in C with a minimal Assembly code. In subsequent years, Unix was carried out at the University of California at Berkeley.</p>
 <p>Many variations were then developed and they are collectively referred to as Unix-like operating systems. Unix and Unix-like operating systems are considered as the best ever created in terms of stability, security, flexibility, scalability and elegance.</p>
 <h3 id="introduction-to-linux">Introduction to Linux</h3>
 <p>In 1991, <a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a> (founder of Linux) while studying at the University of Helsinki (in Finland) was not happy with the MS-DOS operating system. His attempt to retrieve a free licence for Unix failed since Unix was not free.  After reading the <em>Operating Systems: Design and Implementation</em> book by <a href="https://en.wikipedia.org/wiki/Andrew_S._Tanenbaum">Andy Tanenbaum</a>, the book that launched him to new heights, he decided to write his own operating system <a href="https://github.com/torvalds/linux">Linux</a>. Linux eventually became one of the largest open source projects in the world.</p>
-<p>Linux actually is the <a href="https://www.kernel.org/">kernel</a>  that provide the core functionalities for many operating systems that based on it. These operating systems often called Linux distribution. There are more than 200 Linux distrubitions out there among them Ubuntu, Fedora, Debian, Kali Linux, &hellip; are most well-known.</p>
+<p>Linux actually is a <a href="https://www.kernel.org/">kernel</a>  - a main component of the Linux operating system and is the interface that communicate users (while they use applications installed on the operating system) to the computer&rsquo;s hardware, manage and leverage resources a efficiently as possible.</p>
+<p><img src="/linux.png" alt="Linux"></p>
+<p>Those operating systems that base their code on the Linux kernel are call Linux distributions. There are more than 200 Linux distributions out there among them Red Hat, Ubuntu, Fedora, Debian, Kali Linux, &hellip; are most well-known. Their focus ranges from desktop (client) use to server use, target from beginner users to expert users.</p>
 <h3 id="linux-vs-unix">Linux vs Unix</h3>
 <p>Linux is considered as a clone of Unix since it was developed to mimic Unix but none of it&rsquo;s source code was copied from Unix source code.</p>
 <p>Like Unix, Linux is a multiuser, multitasking, highly flexible, secure and robust operating system.</p>
@@ -168,8 +192,9 @@
 <p>Software is like sex. It&rsquo;s better when it&rsquo;s free. &ndash; Linus Torvalds</p>
 </blockquote>
 <p>Linux can run on a wide range of hardware, including handheld devices (including cell phones), game machines, desktop computers, workstations, mainframes, supercomputer, industry robots and even wristwatches.</p>
-<p>Linux is used by individuals, corporations, goverments, academic institutions and other organizations. Since Linux&rsquo;s source code is open, everyone can monitor the code for security holes or customize it to suite their need.</p>
-<p>People, especially who is studying to become computer professionals, are more and more interested in learning Linux. Having linux skills is also desirable for many programmers.</p>
+<p>Linux is used by individuals, corporations, governments, academic institutions and other organizations. Since Linux&rsquo;s source code is open, everyone can monitor the code for security holes or customize it to suite their need.</p>
+<p>People, especially who is studying to become computer professionals, are more and more interested in learning Linux. Having Linux skills is also desirable for many programmers.</p>
+<p>To make things concise and</p>
 
 </div>
 

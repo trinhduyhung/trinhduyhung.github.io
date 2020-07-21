@@ -197,6 +197,9 @@ We will be using ssh as the protocol to authenticate our git requests to Github 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/.ssh
 cat id_rsa.pub
 </code></pre></div><p>Then copy the output text and login to <a href="https://github.com/">Github</a> with your personal account. Then go to Settings &gt; SSH and GPG keys &gt; New SSH Key. Copy the output text and paste to the text area on Github. Name it, for example, &ldquo;key generated using company A’s laptop&rdquo;.</p>
+<blockquote>
+<p>Make sure to name your SSH key something you can remember so that if you need to revoke a key later, you can easily tell which one you’re looking for.</p>
+</blockquote>
 <h3 id="register-generated-key-pairs-with-ssh-agent">Register generated key pairs with ssh-agent</h3>
 <p>The ssh-agent acts like a keychain that is responsible for holding the private keys. In addition to holding private keys it also handles signing the authentication data using private keys.</p>
 <p>Before adding the new SSH key to the ssh-agent, ensure the ssh-agent is running by executing the following command:</p>
@@ -219,7 +222,7 @@ Host github.com
   IdentityFile ~/.ssh/id_rsa_personal
 </code></pre><p>Save it.</p>
 <p>Now <strong>company</strong> becomes a custom host name for the Github URL corresponding to your company Github account. Later as you will see, you will be naming your remote git repository in conjunction with this host name. In the configuration file, we map this custom host name to the <strong>id_rsa</strong> key.</p>
-<p><strong>Configure the git user name and email information</strong> <!-- raw HTML omitted -->
+<p><strong>Configure the git user name and email information</strong>
 This is important because you’re having two emails: personal and company. Github identifies the author of any commit from the email attached with the commit. We need to tell git the proper information for the author.
 You can use the git commands like the following:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git config --global user.name <span style="color:#e6db74">&#34;Bob&#34;</span>

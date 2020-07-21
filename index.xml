@@ -17,7 +17,7 @@
       <pubDate>Sun, 12 Jul 2020 16:27:26 +0700</pubDate>
       
       <guid>https://trinhduyhung.github.io/posts/introduction-linux/</guid>
-      <description>A brief history of Unix In 1969 (also the year in which people went to the moon for the first time in human history) the very first version of Unix operating system was created in assembly language for the minicomputer PDP-7 at Bell Labs (9 Nobel Prizes have been awarded for the work completed at this phenomenon laboratory). The PDP-7 on which Ken Thompson developed and ran the first version of Unix had a really small memory (4 kilobytes).</description>
+      <description>A brief history of Unix It all started in 1969 when Ken Thompson wrote his game named Space Travel that simulates travel in the Solar System. He originally wrote it for use on Multics (Multiplexed Information and Computing Service) operating system, but soon after Bell Labs pulled out of the Multics project, he rewrote it for the obsolete and little-used PDP-7 minicomputer that he found at his neighboring department. While writing this game on the PDP-7, he decided to implement his own base code libraries for the game to use including arithmetic, packages and graphics subsystem.</description>
     </item>
     
     <item>
