@@ -56,6 +56,8 @@ Java has the following primitive data types that are summarized in a table like 
         <a href='/tags/java/' style='font-size:1em'>java</a>
       </li><li>
         <a href='/tags/linux/' style='font-size:1em'>linux</a>
+      </li><li>
+        <a href='/tags/mysql/' style='font-size:1em'>mysql</a>
       </li></ul>
 </div>
 
@@ -223,19 +225,47 @@ Java has the following primitive data types that are summarized in a table like 
 </tbody>
 </table>
 <p><strong>Widening</strong> happens implicitly when converting a smaller type to a larger size type:</p>
-<p>• byte to short, int, long, float, or double
-• short to int, long, float, or double
-• char to int, long, float, or double
-• int to long, float, or double
-• long to float or double
-• float to double</p>
+<ul>
+<li>
+<p>byte to short, int, long, float, or double</p>
+</li>
+<li>
+<p>short to int, long, float, or double</p>
+</li>
+<li>
+<p>char to int, long, float, or double</p>
+</li>
+<li>
+<p>int to long, float, or double</p>
+</li>
+<li>
+<p>long to float or double</p>
+</li>
+<li>
+<p>float to double</p>
+</li>
+</ul>
 <p><strong>Narrowing</strong> happens explicitly by using the keyword <code>cast</code> when converting a larger type to a smaller size type:</p>
-<p>• short to byte or char
-• char to byte or short
-• int to byte, short, or char
-• long to byte, short, char, or int
-• float to byte, short, char, int, or long
-• double to byte, short, char, int, long, or float</p>
+<ul>
+<li>
+<p>short to byte or char</p>
+</li>
+<li>
+<p>char to byte or short</p>
+</li>
+<li>
+<p>int to byte, short, or char</p>
+</li>
+<li>
+<p>long to byte, short, char, or int</p>
+</li>
+<li>
+<p>float to byte, short, char, int, or long</p>
+</li>
+<li>
+<p>double to byte, short, char, int, long, or float</p>
+</li>
+</ul>
 <p>Let me introduce some examples to see how some of these work.</p>
 <p><strong>Widening conversion from byte to int</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span> <span style="color:#f92672">{</span>
@@ -294,7 +324,7 @@ Java has the following primitive data types that are summarized in a table like 
 <span style="color:#f92672">}</span>
 </code></pre></div><p>Since <code>99990000</code> is outside of the range supported by the <code>short</code> data type, the code without a cast as <code>(short)</code> will not compile. Java forces users to explicitly specify their attention by using a cast because it&rsquo;s a way to signify users of possibility of losing information about the sign and magnitude of the numeric values and also precision as in this case, the result produced by the code to the console is <code>-17936</code>. How come is that?</p>
 <p>In Java all integral primitive data types including byte, short, int, long are represented in memory using two&rsquo;s-complement representation. The two&rsquo;s-complement representation of <code>99990000</code> is <code>00000101 11110101 10111001 11110000</code>. This is also the 4 bytes of information stored in the memory for an <code>int</code>. When casting to a <code>short</code> which is 2 bytes in size, only 16 least significant bits which is <code>10111001 11110000</code> will be kept and other information will be discarded (loss). <code>10111001 1111000</code> is the two&rsquo;s complement representation of <code>-17936</code>. That why the result is like what it is.</p>
-<p><strong>Summary</strong>: while working with primitive data types in Java, one can face issues of losing information when converting between them happens either explicitly with cast or implicitly without it. This loss can result in unexpected errors that are not our intention. To prevent this from happening, a good habit is to keep the range of the data type in mind and understanding the two&rsquo;s-complement representation of integral types can really help in most cases.</p>
+<p><strong>Summary</strong>: while working with primitive data types in Java, one can face issues of losing information when converting between them either explicitly with a cast or implicitly without it. This loss can result in unexpected errors that are not our intention. To prevent this from happening, a good habit is to keep in mind the range of the data type involved in. Also understanding the two&rsquo;s-complement representation of integral types can really help in some cases.</p>
 
 </div>
 
