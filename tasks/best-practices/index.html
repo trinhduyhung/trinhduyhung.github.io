@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Best practice
+ (My rule) Implement things following open source standard: for example how to implement a log client PECS - &ldquo;Producer - Extends, Consumer - Super&rdquo;: The Get and Put Principle: use an extends wildcard when you only get values our of a structure, use a super wildcard when you only put values into a structure, and don&rsquo;t use a wildcard you both get and put. (Java) Generally, it&rsquo;s not a good practice to modify variables used in lambda expressions and anonymous classes.'>
+<meta name='theme-color' content='#9bbde8'>
+
+<meta property='og:title' content=' • Programming thoughts'>
+<meta property='og:description' content='Best practice
+ (My rule) Implement things following open source standard: for example how to implement a log client PECS - &ldquo;Producer - Extends, Consumer - Super&rdquo;: The Get and Put Principle: use an extends wildcard when you only get values our of a structure, use a super wildcard when you only put values into a structure, and don&rsquo;t use a wildcard you both get and put. (Java) Generally, it&rsquo;s not a good practice to modify variables used in lambda expressions and anonymous classes.'>
+<meta property='og:url' content='https://trinhduyhung.github.io/tasks/best-practices/'>
+<meta property='og:site_name' content='Programming thoughts'>
+<meta property='og:type' content='article'><meta property='article:section' content='tasks'><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.73.0" />
+
+  <title> • Programming thoughts</title>
+  <link rel='canonical' href='https://trinhduyhung.github.io/tasks/best-practices/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#9bbde8;}
+</style>
+
+  
+
+</head>
+<body class='page type-tasks has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Looking for?</h4>
+  </header>
+
+  <form action='/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud no-shuffle'><li>
+        <a href='/tags/github/' style='font-size:1em'>github</a>
+      </li><li>
+        <a href='/tags/java/' style='font-size:1em'>java</a>
+      </li><li>
+        <a href='/tags/linux/' style='font-size:1em'>linux</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='https://trinhduyhung.github.io'>Home</a>
+      </li><li class='item'>
+        <a href='https://trinhduyhung.github.io/posts/'>Posts</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Programming thoughts</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'></h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='0001-01-01T00:00:00Z'>0001, Jan 01</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+3 mins read
+</span>
+
+
+  
+  
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p><a href="https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards">Best practice</a></p>
+<ul>
+<li>(My rule) Implement things following open source standard: for example how to implement a log client</li>
+<li><strong>PECS</strong> - &ldquo;Producer - Extends, Consumer - Super&rdquo;: The Get and Put Principle: use an extends wildcard when you only get values our of a structure, use a super wildcard when you only put values into a structure, and don&rsquo;t use a wildcard you both get and put.</li>
+<li>(Java) Generally, <strong>it&rsquo;s not a good practice to modify variables used in lambda expressions and anonymous classes</strong>. We cannot know how these variables are going to be used inside method blocks. Mutating them might lead to unexpected results in multithreading environments.</li>
+<li>Spring bean scope: As a rule, you should use the prototype scope for all stateful beans and the singleton scope for stateless beans.</li>
+<li>Typically, one does not configure fine-grained domain objects in the container, because it is usually the responsibility of DAOs and business logic to create and load domain objects. However, you can use Spring’s integration with AspectJ to configure objects that have been created outside the control of an IoC container. See Using AspectJ to dependency-inject domain objects with Spring.</li>
+<li>Spring: Since you can mix constructor-based and setter-based DI, it is a good rule of thumb to use constructors for mandatory dependencies and setter methods or configuration methods for optional dependencies. Note that use of the @Required annotation on a setter method can be used to make the property be a required dependency; however, constructor injection with programmatic validation of arguments is preferable.</li>
+<li>A general practice known as fail fast programming suggests that an error is more easily pinpointed if an exception is thrown as soon as an error is discovered (as opposed to ignoring the error and deferring the exception to sometime in the future).</li>
+<li>when writing code, focus on the API (what behavior of the code that the client code expects)</li>
+<li>it is natural to consider adding static methods for operations that involve multiple objects where none of them naturally suggests itself as the one that should invoke the method.</li>
+<li>In older programming languages, such variables (static here) are known as global variables, because of their global scope. In modern programming, we focus on limiting scope and therefore rarely use such variables. When we do, we will call attention to them.</li>
+<li>&ldquo;For many programs, developing a mathematical model of running time reduces to the following steps: (1). Develop an input model, including a definition of the problem size. (2). Identify the inner loop. (3). Define a cost model that includes operations in the inner loop. (4). Determine the frequency of execution of those operations for the given input.&rdquo;</li>
+</ul>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'>
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/tasks/post-progress/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span></a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/trinhduyhung' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:trinhduyhung1985@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2020 Trinh Duy Hung. Powered by <!-- raw HTML omitted -->Hugo<!-- raw HTML omitted --> and <!-- raw HTML omitted -->Engimo<!-- raw HTML omitted --> </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='https://trinhduyhung.github.io/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

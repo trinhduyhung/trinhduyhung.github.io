@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on Programming thoughts</title>
+    <link>https://trinhduyhung.github.io/tags/java/</link>
+    <description>Recent content in java on Programming thoughts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 Aug 2020 11:51:24 +0700</lastBuildDate>
+    
+	<atom:link href="https://trinhduyhung.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Widening and narrowing in Java</title>
+      <link>https://trinhduyhung.github.io/posts/widening-narrowing-in-java/</link>
+      <pubDate>Sun, 09 Aug 2020 11:51:24 +0700</pubDate>
+      
+      <guid>https://trinhduyhung.github.io/posts/widening-narrowing-in-java/</guid>
+      <description>While reading the Java language specification (JLS 14), I immediately pay attention to the chapter 5 where it describes how widening and narrowing for primitive data types works in Java. It&amp;rsquo;s because I&amp;rsquo;m always interested in somethings that go behind the sense, somethings that are at a low level, for example things related to binary representation of data.
+Java has the following primitive data types that are summarized in a table like so:</description>
+    </item>
+    
+  </channel>
+</rss>

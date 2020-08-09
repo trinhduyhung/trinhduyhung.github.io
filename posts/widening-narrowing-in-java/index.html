@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='While reading the Java language specification (JLS 14), I immediately pay attention to the chapter 5 where it describes how widening and narrowing for primitive data types works in Java. It&rsquo;s because I&rsquo;m always interested in somethings that go behind the sense, somethings that are at a low level, for example things related to binary representation of data.
+Java has the following primitive data types that are summarized in a table like so:'>
+<meta name='theme-color' content='#9bbde8'>
+
+<meta property='og:title' content='Widening and narrowing in Java • Programming thoughts'>
+<meta property='og:description' content='While reading the Java language specification (JLS 14), I immediately pay attention to the chapter 5 where it describes how widening and narrowing for primitive data types works in Java. It&rsquo;s because I&rsquo;m always interested in somethings that go behind the sense, somethings that are at a low level, for example things related to binary representation of data.
+Java has the following primitive data types that are summarized in a table like so:'>
+<meta property='og:url' content='https://trinhduyhung.github.io/posts/widening-narrowing-in-java/'>
+<meta property='og:site_name' content='Programming thoughts'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='java'><meta property='article:published_time' content='2020-08-09T11:51:24&#43;07:00'/><meta property='article:modified_time' content='2020-08-09T11:51:24&#43;07:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.73.0" />
+
+  <title>Widening and narrowing in Java • Programming thoughts</title>
+  <link rel='canonical' href='https://trinhduyhung.github.io/posts/widening-narrowing-in-java/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#9bbde8;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Looking for?</h4>
+  </header>
+
+  <form action='/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud no-shuffle'><li>
+        <a href='/tags/github/' style='font-size:1em'>github</a>
+      </li><li>
+        <a href='/tags/java/' style='font-size:1em'>java</a>
+      </li><li>
+        <a href='/tags/linux/' style='font-size:1em'>linux</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='https://trinhduyhung.github.io'>Home</a>
+      </li><li class='item'>
+        <a href='https://trinhduyhung.github.io/posts/'>Posts</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Programming thoughts</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Widening and narrowing in Java</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2020-08-09T11:51:24&#43;07:00'>2020, Aug 09</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+6 mins read
+</span>
+
+
+  
+  
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>While reading the Java language specification (JLS 14), I immediately pay attention to the chapter 5 where it describes how widening and narrowing for primitive data types works in Java. It&rsquo;s because I&rsquo;m always interested in somethings that go behind the sense, somethings that are at a low level, for example things related to binary representation of data.</p>
+<p>Java has the following primitive data types that are summarized in a table like so:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Size</th>
+<th>Range</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>two&rsquo;s complement integer</td>
+<td>1 byte</td>
+<td>whole numbers from -128 to 127</td>
+<td>0</td>
+</tr>
+<tr>
+<td>short</td>
+<td>two&rsquo;s complement integer</td>
+<td>2 bytes</td>
+<td>whole numbers from -32,768 to 32,767</td>
+<td>0</td>
+</tr>
+<tr>
+<td>int</td>
+<td>two&rsquo;s complement integer</td>
+<td>4 bytes</td>
+<td>whole numbers from -2,147,483,648 to 2,147,483,647</td>
+<td>0</td>
+</tr>
+<tr>
+<td>long</td>
+<td>two&rsquo;s complement integer</td>
+<td>8 bytes</td>
+<td>whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807</td>
+<td>0L</td>
+</tr>
+<tr>
+<td>float</td>
+<td>IEEE 754 floating point</td>
+<td>4 bytes</td>
+<td>approximately ±3.40282347E+38F (6-7 significant decimal digits)</td>
+<td>0.0f</td>
+</tr>
+<tr>
+<td>double</td>
+<td>IEEE 754 floating point</td>
+<td>8 bytes</td>
+<td>approximately ±1.79769313486231570E+308 (15 significant decimal digits)</td>
+<td>0.0d</td>
+</tr>
+<tr>
+<td>char</td>
+<td>single Unicode character</td>
+<td>2 bytes</td>
+<td>Unicode character from &lsquo;\u000&rsquo; (or 0) to &lsquo;\uffff&rsquo; (or 65,535 inclusive)</td>
+<td>&lsquo;\u0000&rsquo;</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>true or false</td>
+<td>1 bit</td>
+<td>true and false</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Widening</strong> happens implicitly when converting a smaller type to a larger size type:</p>
+<p>• byte to short, int, long, float, or double
+• short to int, long, float, or double
+• char to int, long, float, or double
+• int to long, float, or double
+• long to float or double
+• float to double</p>
+<p><strong>Narrowing</strong> happens explicitly by using the keyword <code>cast</code> when converting a larger type to a smaller size type:</p>
+<p>• short to byte or char
+• char to byte or short
+• int to byte, short, or char
+• long to byte, short, char, or int
+• float to byte, short, char, int, or long
+• double to byte, short, char, int, long, or float</p>
+<p>Let me introduce some examples to see how some of these work.</p>
+<p><strong>Widening conversion from byte to int</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span> <span style="color:#f92672">{</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+       <span style="color:#66d9ef">int</span> largeNumber<span style="color:#f92672">;</span>
+       <span style="color:#66d9ef">byte</span> smallNumber <span style="color:#f92672">=</span> 10<span style="color:#f92672">;</span>
+       largeNumber <span style="color:#f92672">=</span> smallNumber<span style="color:#f92672">;</span>
+       System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>largeNumber<span style="color:#f92672">);</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>In this case, after the assignment <code>largeNumber = smallNumber</code> the <code>largeNumber</code> will be having the value <code>10</code> meaning the conversion happens without losing information. This is because a <code>byte</code> data type takes up just one byte so it can fit within an <code>int</code> data type that takes up 4 bytes without issues.</p>
+<p><strong>Sign extension</strong></p>
+<blockquote>
+<p>A widening conversion of a signed integer value to an integral type T simply sign extends the two&rsquo;s-complement representation of the integer value to fill the wider format. &ndash; JLS14</p>
+</blockquote>
+<p>Let&rsquo;s consider the above example to see how sign extension works in this case.</p>
+<p>The two&rsquo;s-complement representation of a <code>byte</code> data type with value of <code>10</code> is <code>00001010</code>(8 bits here because of a<code>byte</code> data type). The sign bit is the most significant bit or the leftmost bit, in this case is <code>0</code>. To retrieve the converted value of <code>10</code> in the <code>int</code> data type, the sign extension will fill all the extra bits on the left of the 8 bits representation until the result reaches 32 bits in length (because the size of an <code>int</code> is 32 bits). This results in <code>00000000 00000000 00000000 00001010</code>. This is the two&rsquo;s-complement representation of <code>10</code> as an <code>int</code>.</p>
+<p>If the <code>smallNumber</code> was initialized with <code>-10</code> then the two&rsquo;s-complement representation of it is <code>11110110</code>, thus the sign bit (left most bit) is <code>1</code>. The sign extension will fill all the extra bits on the left of this representation with bit <code>1</code> until the result reaches 32 bits in length. In result, <code>11111111 11111111 11111111 11110110</code>wil be produced as the two&rsquo;s-complement representation of <code>-10</code>.</p>
+<p><strong>char data type is a special one</strong></p>
+<p>Let&rsquo;s talk a bout how a <code>char</code> data type is represented in Java. A char is used to represent a single Unicode character using the <a href="https://en.wikipedia.org/wiki/UTF-16">UTF-16</a> character encoding format. In UTF-16 each character is represented using a notion of a prefix <code>U+</code> plus some designated hexadecimal number. This notion is called the code point of the character. For example the character <code>最</code> has the code point U+6700. In Java this character can be represented using 2 bytes: 0x67 and 0x00 and stored in a <code>char</code> variable. The binary representation of the code point for this character is <code>110011100000000</code> which is called a code unit. Let&rsquo;s see a code example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">char</span> c <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;\u6700&#39;</span><span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Running the code above will output the <code>最</code> in the console.</p>
+<p>Since <code>110011100000000</code> in binary is <code>26368</code> in decimal. You can also using an integer literal <code>26368</code> to declare and initialize the character like in the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">char</span> c <span style="color:#f92672">=</span> 26368<span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>c<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Running the code above will also output the <code>最</code> in the console.</p>
+<p><strong>Widening conversion from int to float, or from long to float, or from long to double</strong></p>
+<p>Since we&rsquo;re converting from a data type to another one which is of a smaller size: from <code>long</code> to <code>float</code>; or from a data type to another one which is of the same size: from <code>int</code> to <code>float</code>, from <code>long</code> to <code>double</code> but has to hold both the decimal and fractional part, loss of precision might occur.</p>
+<p>Let&rsquo;s see a code example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">int</span> big <span style="color:#f92672">=</span> 1234567890<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">float</span> approx <span style="color:#f92672">=</span> big<span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>big <span style="color:#f92672">-</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span>approx<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Running the code above will output <code>-46</code> in the console thus indicating that information was lost during the conversion from type int to type float because values of type float are not precise to nine significant digits.</p>
+<p><strong>Narrowing conversion from int to short</strong></p>
+<p>Let&rsquo;s consider a code example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">int</span> largerNumber <span style="color:#f92672">=</span> 99990000<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">short</span> smallerNumber<span style="color:#f92672">;</span>
+        smallerNumber <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">short</span><span style="color:#f92672">)</span> largerNumber<span style="color:#f92672">;</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>smallerNumber<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Since <code>99990000</code> is outside of the range supported by the <code>short</code> data type, the code without a cast as <code>(short)</code> will not compile. Java forces users to explicitly specify their attention by using a cast because it&rsquo;s a way to signify users of possibility of losing information about the sign and magnitude of the numeric values and also precision as in this case, the result produced by the code to the console is <code>-17936</code>. How come is that?</p>
+<p>In Java all integral primitive data types including byte, short, int, long are represented in memory using two&rsquo;s-complement representation. The two&rsquo;s-complement representation of <code>99990000</code> is <code>00000101 11110101 10111001 11110000</code>. This is also the 4 bytes of information stored in the memory for an <code>int</code>. When casting to a <code>short</code> which is 2 bytes in size, only 16 least significant bits which is <code>10111001 11110000</code> will be kept and other information will be discarded (loss). <code>10111001 1111000</code> is the two&rsquo;s complement representation of <code>-17936</code>. That why the result is like what it is.</p>
+<p><strong>Summary</strong>: while working with primitive data types in Java, one can face issues of losing information when converting between them happens either explicitly with cast or implicitly without it. This loss can result in unexpected errors that are not our intention. To prevent this from happening, a good habit is to keep the range of the data type in mind and understanding the two&rsquo;s-complement representation of integral types can really help in most cases.</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/java/'>java</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/introduction-linux/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Introduction to Linux</a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/trinhduyhung' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:trinhduyhung1985@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2020 Trinh Duy Hung. Powered by <!-- raw HTML omitted -->Hugo<!-- raw HTML omitted --> and <!-- raw HTML omitted -->Engimo<!-- raw HTML omitted --> </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='https://trinhduyhung.github.io/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

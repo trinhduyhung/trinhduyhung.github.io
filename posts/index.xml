@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Programming thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Jul 2020 16:27:26 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2020 11:51:24 +0700</lastBuildDate>
     
 	<atom:link href="https://trinhduyhung.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Widening and narrowing in Java</title>
+      <link>https://trinhduyhung.github.io/posts/widening-narrowing-in-java/</link>
+      <pubDate>Sun, 09 Aug 2020 11:51:24 +0700</pubDate>
+      
+      <guid>https://trinhduyhung.github.io/posts/widening-narrowing-in-java/</guid>
+      <description>While reading the Java language specification (JLS 14), I immediately pay attention to the chapter 5 where it describes how widening and narrowing for primitive data types works in Java. It&amp;rsquo;s because I&amp;rsquo;m always interested in somethings that go behind the sense, somethings that are at a low level, for example things related to binary representation of data.
+Java has the following primitive data types that are summarized in a table like so:</description>
+    </item>
     
     <item>
       <title>Introduction to Linux</title>
@@ -18,17 +28,6 @@
       
       <guid>https://trinhduyhung.github.io/posts/introduction-linux/</guid>
       <description>A brief history of Unix It all started in 1969 when Ken Thompson wrote his game named Space Travel that simulates travel in the Solar System. He originally wrote it for use on Multics (Multiplexed Information and Computing Service) operating system, but soon after Bell Labs pulled out of the Multics project, he rewrote it for the obsolete and little-used PDP-7 minicomputer that he found at his neighboring department. While writing this game on the PDP-7, he decided to implement his own base code libraries for the game to use including arithmetic, packages and graphics subsystem.</description>
-    </item>
-    
-    <item>
-      <title>ERROR 1698 (28000): Access denied for user &#39;root&#39;@&#39;localhost&#39;</title>
-      <link>https://trinhduyhung.github.io/posts/mysql-access-denied-1698/</link>
-      <pubDate>Sun, 05 Jul 2020 15:11:45 +0700</pubDate>
-      
-      <guid>https://trinhduyhung.github.io/posts/mysql-access-denied-1698/</guid>
-      <description>I just installed MySQL server (version 8.0) into my Ubuntu 20.04 with an empty password for the root user. It has occurred to me that the Access denied for user issue kept spinning my head.
-Because for every project we use MySQL we always provide username and password to authenticate queries. I needed to change the password and get rid of the Access denied issue.
-Some internet user suggests that changing the password can solve the issue, like the following</description>
     </item>
     
     <item>

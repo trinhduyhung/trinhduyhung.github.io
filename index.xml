@@ -6,10 +6,20 @@
     <description>Recent content on Programming thoughts</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Jul 2020 16:27:26 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2020 11:51:24 +0700</lastBuildDate>
     
 	<atom:link href="https://trinhduyhung.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Widening and narrowing in Java</title>
+      <link>https://trinhduyhung.github.io/posts/widening-narrowing-in-java/</link>
+      <pubDate>Sun, 09 Aug 2020 11:51:24 +0700</pubDate>
+      
+      <guid>https://trinhduyhung.github.io/posts/widening-narrowing-in-java/</guid>
+      <description>While reading the Java language specification (JLS 14), I immediately pay attention to the chapter 5 where it describes how widening and narrowing for primitive data types works in Java. It&amp;rsquo;s because I&amp;rsquo;m always interested in somethings that go behind the sense, somethings that are at a low level, for example things related to binary representation of data.
+Java has the following primitive data types that are summarized in a table like so:</description>
+    </item>
     
     <item>
       <title>Introduction to Linux</title>
@@ -21,17 +31,6 @@
     </item>
     
     <item>
-      <title>ERROR 1698 (28000): Access denied for user &#39;root&#39;@&#39;localhost&#39;</title>
-      <link>https://trinhduyhung.github.io/posts/mysql-access-denied-1698/</link>
-      <pubDate>Sun, 05 Jul 2020 15:11:45 +0700</pubDate>
-      
-      <guid>https://trinhduyhung.github.io/posts/mysql-access-denied-1698/</guid>
-      <description>I just installed MySQL server (version 8.0) into my Ubuntu 20.04 with an empty password for the root user. It has occurred to me that the Access denied for user issue kept spinning my head.
-Because for every project we use MySQL we always provide username and password to authenticate queries. I needed to change the password and get rid of the Access denied issue.
-Some internet user suggests that changing the password can solve the issue, like the following</description>
-    </item>
-    
-    <item>
       <title>Configure multiple Github accounts on a single machine</title>
       <link>https://trinhduyhung.github.io/posts/multiple-github-accounts/</link>
       <pubDate>Sat, 04 Jul 2020 11:06:25 +0700</pubDate>
@@ -39,6 +38,36 @@ Some internet user suggests that changing the password can solve the issue, like
       <guid>https://trinhduyhung.github.io/posts/multiple-github-accounts/</guid>
       <description>Sooner or later as a developer, you will find yourself in a situation where you’re working using multiple Github accounts. One is your company account, one is your personal account. In this post, I’m going to share a common approach that can help you achieve that.
 We will be using ssh as the protocol to authenticate our git requests to Github server because we do not want to enter the password each time we do a git request using username/password authentication.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://trinhduyhung.github.io/tasks/best-practices/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://trinhduyhung.github.io/tasks/best-practices/</guid>
+      <description>Best practice
+ (My rule) Implement things following open source standard: for example how to implement a log client PECS - &amp;ldquo;Producer - Extends, Consumer - Super&amp;rdquo;: The Get and Put Principle: use an extends wildcard when you only get values our of a structure, use a super wildcard when you only put values into a structure, and don&amp;rsquo;t use a wildcard you both get and put. (Java) Generally, it&amp;rsquo;s not a good practice to modify variables used in lambda expressions and anonymous classes.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://trinhduyhung.github.io/tasks/post-progress/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://trinhduyhung.github.io/tasks/post-progress/</guid>
+      <description>Posts in progress Linux introduction:  Ken Thompson: developed UNIX at Bell Labs Linux for newbies: advantages, why and how to study, installation, alternatives The PDP-7 was used by Thompson for first version of UNIX Linux definition by The Linux Information Project (LINFO) Famous quotations about Linux, by The Linux Information Project (LINFO) What is Linux? An in-depth introduction Intro To Linux [For Beginners] - DEV  Linux shell  Shell definition by The Linux Information Project (LINFO) How to change Shells by The Linux Information Project (LINFO)  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://trinhduyhung.github.io/tasks/spring-notes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://trinhduyhung.github.io/tasks/spring-notes/</guid>
+      <description>@SpringBootApplication is a convenience annotation that adds all of the following:
+  @Configuration: Tags the class as a source of bean definitions for the application context.
+  @EnableAutoConfiguration: Tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings. For example, if spring-webmvc is on the classpath, this annotation flags the application as a web application and activates key behaviors, such as setting up a DispatcherServlet.</description>
     </item>
     
   </channel>

@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://trinhduyhung.github.io/tags/java/</loc>
+    <lastmod>2020-08-09T11:51:24+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://trinhduyhung.github.io/posts/</loc>
+    <lastmod>2020-08-09T11:51:24+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://trinhduyhung.github.io/</loc>
+    <lastmod>2020-08-09T11:51:24+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://trinhduyhung.github.io/tags/</loc>
+    <lastmod>2020-08-09T11:51:24+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://trinhduyhung.github.io/posts/widening-narrowing-in-java/</loc>
+    <lastmod>2020-08-09T11:51:24+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://trinhduyhung.github.io/categories/</loc>
     <lastmod>2020-07-12T16:27:26+07:00</lastmod>
   </url>
@@ -18,38 +43,13 @@
   </url>
   
   <url>
-    <loc>https://trinhduyhung.github.io/posts/</loc>
-    <lastmod>2020-07-12T16:27:26+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://trinhduyhung.github.io/</loc>
-    <lastmod>2020-07-12T16:27:26+07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://trinhduyhung.github.io/categories/series/</loc>
     <lastmod>2020-07-12T16:27:26+07:00</lastmod>
   </url>
   
   <url>
-    <loc>https://trinhduyhung.github.io/tags/</loc>
-    <lastmod>2020-07-12T16:27:26+07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://trinhduyhung.github.io/categories/configuration/</loc>
-    <lastmod>2020-07-05T15:11:45+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://trinhduyhung.github.io/posts/mysql-access-denied-1698/</loc>
-    <lastmod>2020-07-05T15:11:45+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://trinhduyhung.github.io/tags/mysql/</loc>
-    <lastmod>2020-07-05T15:11:45+07:00</lastmod>
+    <lastmod>2020-07-04T11:06:25+07:00</lastmod>
   </url>
   
   <url>
@@ -64,6 +64,22 @@
   
   <url>
     <loc>https://trinhduyhung.github.io/search/</loc>
+  </url>
+  
+  <url>
+    <loc>https://trinhduyhung.github.io/tasks/best-practices/</loc>
+  </url>
+  
+  <url>
+    <loc>https://trinhduyhung.github.io/tasks/post-progress/</loc>
+  </url>
+  
+  <url>
+    <loc>https://trinhduyhung.github.io/tasks/spring-notes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://trinhduyhung.github.io/tasks/</loc>
   </url>
   
 </urlset>
